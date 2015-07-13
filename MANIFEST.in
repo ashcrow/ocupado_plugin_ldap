@@ -1,0 +1,4 @@
+include AUTHORS COPYING LICENSE README.md test-requirements.txt
+graft conf
+graft src/ocupado_plugin_ldap
+graft test
