@@ -63,7 +63,7 @@ class LDAP:
         """
         Defines how to logout via a Plugin.
         """
-        self._con.unbind_ext_s()
+        self._con.unbind_s()
 
     def exists(self, userid):
         """
@@ -73,8 +73,8 @@ class LDAP:
         """
         safe_filter = self._filter % escape_filter_chars(userid)
         result = self._con.search_s(
-            self._base, ldap.SCOPE_SUBTREE, safe_filter)
-        if result is None:
+            self._base, ldap.SCOPE_ONELEVEL, safe_filter)
+        if result == [] or result is None:
             return False, {'exists': False, 'details': {'username': userid}}
         return True, {"exists": True, "details": {"username": userid}}
 

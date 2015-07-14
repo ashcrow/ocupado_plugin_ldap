@@ -61,10 +61,10 @@ class TestOcupadoPluginLDAP(unittest.TestCase):
             self.assertEquals(_simple_bind_s.call_count, 1)
 
     def test_plugin_ldap_logout(self):
-        with mock.patch('ldap.ldapobject.SimpleLDAPObject.unbind_ext_s') as (
-                _unbind_ext_s):
+        with mock.patch('ldap.ldapobject.SimpleLDAPObject.unbind_s') as (
+                _unbind_s):
             self.l.logout()
-            self.assertEquals(_unbind_ext_s.call_count, 1)
+            self.assertEquals(_unbind_s.call_count, 1)
 
     def test_plugin_ldap_exists(self):
         with mock.patch('ldap.ldapobject.SimpleLDAPObject.search_s') as (
