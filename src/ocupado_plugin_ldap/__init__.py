@@ -48,11 +48,9 @@ class LDAP:
         self._user = user
         self._passwd = passwd
 
-    def authenticate(self, **kwargs):
+    def authenticate(self):
         """
         Defines how to authenticate via LDAP.
-
-        :kwargs: Keyword arguments to use with authenticatation.
         """
         if self._user and self._passwd:
             self._con.simple_bind_s(self._user, self._passwd)
@@ -84,6 +82,3 @@ class LDAP:
         """
         # TODO
         raise NotImplementedError('get_all_users() must be implemented')
-
-    # Read-only properties
-    users = property(lambda s: s.get_all_usernames())
