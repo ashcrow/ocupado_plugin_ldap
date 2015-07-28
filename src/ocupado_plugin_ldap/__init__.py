@@ -43,6 +43,8 @@ class LDAP:
         """
         self._uri = uri
         self._con = ldap.initialize(self._uri)
+        if type(base) is list:
+            base = ','.join(base)
         self._base = base
         self._filter = filter
         self._user = user
